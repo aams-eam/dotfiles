@@ -1,3 +1,12 @@
+#!/bin/bash
+
+# User vars
+export ME='ghostu'
+
+# Script vars
+MYHOME="/home/$ME"
+ASME="sudo -u $ME"
+
 # helper functions
 function _echo() { printf "\n╓───── %s \n╙────────────────────────────────────── ─ ─ \n" "$1"; }
 
@@ -33,38 +42,45 @@ apt update && apt install -y \
 		ninja-build \
 		gettext \
 		cmake \
+		tmux \
 		xsel
 
 # i do not want these dirs to be symlinks
 _echo "creating directory skeletons"
-mkdir -p \
-	$HOME/.{config,local} \
-	$HOME/.local/{bin,docs,cache,lib,share,src,state} \
-	$HOME/.local/state/zsh
+$ASME mkdir -p \
+	$MYHOME/.{config,local} \
+	$MYHOME/.local/{bin,docs,cache,lib,share,src,state} \
+	$MYHOME/.local/state/zsh
 
+# nvim
 _echo "building neovim"
-git clone --depth=1 https://github.com/neovim/neovim.git -b stable $HOME/.local/src/neovim &&
-	cd $HOME/.local/src/neovim &&
+$ASME git clone --depth=1 https://github.com/neovim/neovim.git -b stable $MYHOME/.local/src/neovim &&
+	cd $MYHOME/.local/src/neovim &&
 	make CMAKE_BUILD_TYPE=RelWithDebInfo &&
 	make install
 
-_echo "building tmux"
+_echo "setting up neovim nvchad"
+$ASME mkdir $MYHOME/.local/nvim &&
+	$ASME git clone --single-branch https://github.com/NvChad/NvChad.git $MYHOME/.local/share/nvim/
+$ASME nvim --headless "+Lazy! sync" +qa
+$ASME nvim --headless "+MasonInstallAll" +qa
+
+_echo "delete .bashrc"
+$ASME rm $MYHOME/.bashrc
+$ASME source .bashrc
 
 _echo "setting up dotfiles"
-git clone git@github.com:xero/dotfiles.git $HOME/.local/src/dotfiles &&
-	cd $HOME/.local/src/dotfiles &&
-	stow bin fun git gpg ssh tmux neovim zsh -t $HOME
+$ASME git clone https://github.com/aams-eam/dotfiles.git $MYHOME/.local/src/dotfiles &&
+	cd $MYHOME/.local/src/dotfiles &&
+	$ASME stow bash git neovim tmux wezterm -t $MYHOME
+
 # tmux
-mkdir $HOME/.config/tmux/plugins &&
-	git clone --depth=1 https://github.com/tmux-plugins/tpm $HOME/.config/tmux/plugins/tpm &&
-	$HOME/.config/tmux/plugins/tpm/scripts/install_plugins.sh
-# nvim
-mkdir $HOME/.local/nvim &&
-	git clone --filter=blob:none --single-branch https://github.com/folke/lazy.nvim.git $HOME/.local/share/nvim/lazy
-nvim --headless "+Lazy! sync" +qa
-nvim --headless "+MasonInstallAll" +qa
+_echo "setting up tmux plugins"
+$ASME mkdir $MYHOME/.config/tmux/plugins &&
+	$ASME git clone --depth=1 https://github.com/tmux-plugins/tpm $MYHOME/.config/tmux/plugins/tpm &&
+	$ASME $MYHOME/.config/tmux/plugins/tpm/scripts/install_plugins.sh
 
 _echo "creating ~src, ~docs, and ~dotfiles aliases"
-useradd -g src -d $HOME/.local/src src
-useradd -d $HOME/.local/src/dotfiles dotfiles
-useradd -d $HOME/docs docs
+useradd -g src -d $MYHOME/.local/src src
+useradd -d $MYHOME/.local/src/dotfiles dotfiles
+useradd -d $MYHOME/docs docs
