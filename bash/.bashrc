@@ -117,4 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 alias py="python3"
-alias snvim="sudo -E nvim"
+alias t="tmux"
+alias v="nvim"
+alias sv="sudo -E nvim"
