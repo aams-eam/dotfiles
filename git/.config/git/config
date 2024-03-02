@@ -1,0 +1,7 @@
+[user]
+	name = Alejandro A. Moreno Sancho
+	email = 56005012+aams-eam@users.noreply.github.com
+[color]
+	ui = auto
+[core]
+  editr = vim
