@@ -42,8 +42,8 @@ apt update && apt install -y \
 		ninja-build \
 		gettext \
 		cmake \
-    automake \
-    npm \
+		automake \
+		npm \
 		xsel
 
 # i do not want these dirs to be symlinks
