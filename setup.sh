@@ -81,7 +81,7 @@ $ASME nvim --headless "+MasonInstallAll" +qa
 
 # tmux
 _echo "setting up tmux plugins"
-$ASME mkdir $MYHOME/.config/tmux/plugins &&
+$ASME mkdir -p $MYHOME/.config/tmux/plugins &&
 	$ASME git clone --depth=1 https://github.com/tmux-plugins/tpm $MYHOME/.config/tmux/plugins/tpm &&
 	$ASME $MYHOME/.config/tmux/plugins/tpm/scripts/install_plugins.sh
 
