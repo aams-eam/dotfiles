@@ -85,7 +85,7 @@ $ASME git clone https://github.com/tmux/tmux.git $MYHOME/.local/src/tmux &&
   cd $MYHOME/.local/src/tmux &&
   sh autogen.sh &&
   ./configure &&
-  $ASME make &&
+  make &&
   make install
 
 _echo "setting up tmux plugins"
