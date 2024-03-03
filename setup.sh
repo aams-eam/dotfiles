@@ -42,6 +42,7 @@ apt update && apt install -y \
 		ninja-build \
 		gettext \
 		cmake \
+    npm \
 		tmux \
 		xsel
 
@@ -59,20 +60,24 @@ $ASME git clone --depth=1 https://github.com/neovim/neovim.git -b stable $MYHOME
 	make CMAKE_BUILD_TYPE=RelWithDebInfo &&
 	make install
 
-_echo "setting up neovim nvchad"
-$ASME mkdir $MYHOME/.local/nvim &&
-	$ASME git clone --single-branch https://github.com/NvChad/NvChad.git $MYHOME/.local/share/nvim/
-$ASME nvim --headless "+Lazy! sync" +qa
-$ASME nvim --headless "+MasonInstallAll" +qa
+_echo "clonning nvim nvchad"
+	$ASME git clone --single-branch https://github.com/NvChad/NvChad.git $MYHOME/.config/nvim
 
 _echo "delete .bashrc"
 $ASME rm $MYHOME/.bashrc
-$ASME source .bashrc
 
 _echo "setting up dotfiles"
 $ASME git clone https://github.com/aams-eam/dotfiles.git $MYHOME/.local/src/dotfiles &&
 	cd $MYHOME/.local/src/dotfiles &&
 	$ASME stow bash git neovim tmux wezterm -t $MYHOME
+
+# Source bashrc
+source $MYHOME/.bashrc
+
+# nvim base nvchad
+_echo "Installing nvim plugins"
+$ASME nvim --headless "+Lazy! sync" +qa
+$ASME nvim --headless "+MasonInstallAll" +qa
 
 # tmux
 _echo "setting up tmux plugins"
