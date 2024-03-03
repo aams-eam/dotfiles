@@ -16,7 +16,7 @@ function _echo() { printf "\n╓───── %s \n╙────────
 }
 
 _echo "installing runtime deps"
-apt update && apt install -y git gpg bash curl locales gnupg software-properties-common
+apt update && apt install -y git gpg bash curl locales gnupg software-properties-common libevent-dev ncurses-dev build-essential bison pkg-config
 
 _echo "installing packages"
 apt update && apt install -y \
@@ -42,8 +42,8 @@ apt update && apt install -y \
 		ninja-build \
 		gettext \
 		cmake \
+    automake \
     npm \
-		tmux \
 		xsel
 
 # i do not want these dirs to be symlinks
@@ -80,6 +80,14 @@ $ASME nvim --headless "+Lazy! sync" +qa
 $ASME nvim --headless "+MasonInstallAll" +qa
 
 # tmux
+_echo "building tmux"
+$ASME git clone https://github.com/tmux/tmux.git $MYHOME/.local/src/tmux &&
+  cd $MYHOME/.local/src/tmux &&
+  sh autogen.sh &&
+  ./configure &&
+  $ASME make &&
+  make install
+
 _echo "setting up tmux plugins"
 $ASME mkdir -p $MYHOME/.config/tmux/plugins &&
 	$ASME git clone --depth=1 https://github.com/tmux-plugins/tpm $MYHOME/.config/tmux/plugins/tpm &&
