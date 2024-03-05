@@ -53,6 +53,10 @@ $ASME mkdir -p \
 	$MYHOME/.local/{bin,docs,cache,lib,share,src,state} \
 	$MYHOME/.local/state/zsh
 
+# lazygit
+_echo "installing lazygit"
+curl -sSL https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz | tar -zxvf - -C $MYHOME/.local/bin lazygit
+
 # nvim
 _echo "building neovim"
 $ASME git clone --depth=1 https://github.com/neovim/neovim.git -b stable $MYHOME/.local/src/neovim &&
