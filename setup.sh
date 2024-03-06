@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # User vars
-export ME='ghostu'
+export ME=$SUDO_USER
 
 # Script vars
 MYHOME="/home/$ME"
