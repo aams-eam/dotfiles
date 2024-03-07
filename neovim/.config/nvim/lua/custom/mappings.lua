@@ -7,9 +7,32 @@ M.general = {
      ["n"] = {"nzz", "Find next occurence"},
      ["N"] = {"Nzz", "Find previous occurence"},
      ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Open LazyGit" },
-     ["<leader>gr"] = { function() require("telescope").extensions.lazygit.lazygit() end, "Open LazyGit" },
+     ["<leader>gr"] = { function() require("telescope.extensions.lazygit").lazygit() end, "Open LazyGit" },
   },
 }
 
+M.disabled = {
+  n = {
+    -- cycle through buffers
+    ["<tab>"] = {""},
+    ["<S-tab>"] = {""},
+
+  }
+}
+
+M.telescope = {
+  n = {
+    ["<leader>fb"] = {
+      function()
+        require("telescope.builtin").buffers(
+          {
+            ignore_current_buffer=true,
+            sort_mru=true,
+          }
+        )
+      end,
+      "Find Buffers" },
+  }
+}
 return M
 
