@@ -2,6 +2,8 @@ local M = {}
 
 M.general = {
   n = {
+     ["<C-b>"] = {"<C-d>zz", "Go down a page"},
+     ["<C-f>"] = {"<C-u>zz", "Go up a page"},
      ["<C-d>"] = {"<C-d>zz", "Go down half a page"},
      ["<C-u>"] = {"<C-u>zz", "Go up half a page"},
      ["n"] = {"nzz", "Find next occurence"},
