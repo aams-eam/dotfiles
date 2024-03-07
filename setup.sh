@@ -67,16 +67,13 @@ $ASME git clone --depth=1 https://github.com/neovim/neovim.git -b stable $MYHOME
 _echo "clonning nvim nvchad"
 	$ASME git clone --single-branch https://github.com/NvChad/NvChad.git $MYHOME/.config/nvim
 
-_echo "delete .bashrc"
-$ASME rm $MYHOME/.bashrc
+_echo "delete .bashrc .gitconfig and .wezterm.lua"
+$ASME rm $MYHOME/.bashrc $MYHOME/.gitconfig $MYHOME/.wezterm.lua
 
 _echo "setting up dotfiles"
 $ASME git clone https://github.com/aams-eam/dotfiles.git $MYHOME/.local/src/dotfiles &&
 	cd $MYHOME/.local/src/dotfiles &&
 	$ASME stow bash git neovim tmux wezterm -t $MYHOME
-
-# Source bashrc
-source $MYHOME/.bashrc
 
 # nvim base nvchad
 _echo "Installing nvim plugins"
@@ -101,3 +98,7 @@ _echo "creating ~src, ~docs, and ~dotfiles aliases"
 useradd -g src -d $MYHOME/.local/src src
 useradd -d $MYHOME/.local/src/dotfiles dotfiles
 useradd -d $MYHOME/docs docs
+
+# Source bashrc
+_echo "Execute the following and you are good to go!"
+echo "source $MYHOME/.bashrc"
