@@ -4,4 +4,4 @@
 [color]
 	ui = auto
 [core]
-  editr = vim
+  editr = nvim
