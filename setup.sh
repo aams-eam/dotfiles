@@ -65,7 +65,7 @@ $ASME git clone --depth=1 https://github.com/neovim/neovim.git -b stable $MYHOME
 	make install
 
 _echo "clonning nvim nvchad"
-	$ASME git clone --single-branch https://github.com/NvChad/NvChad.git $MYHOME/.config/nvim
+	$ASME git clone --branch v2.0 --single-branch https://github.com/NvChad/NvChad.git $MYHOME/.config/nvim
 
 _echo "delete .bashrc .gitconfig and .wezterm.lua"
 $ASME rm $MYHOME/.bashrc $MYHOME/.gitconfig $MYHOME/.wezterm.lua
