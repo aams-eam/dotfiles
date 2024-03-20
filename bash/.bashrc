@@ -116,6 +116,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+function exportallenvs {
+    set -o allexport
+    source "$1"
+    set +o allexport
+  }
+export -f exportallenvs
+
 alias py="python3"
 alias t="tmux"
 alias v="nvim"
