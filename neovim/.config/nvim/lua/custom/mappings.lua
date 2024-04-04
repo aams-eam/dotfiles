@@ -117,5 +117,37 @@ M.dap_python = {
   }
 }
 
+M.dap_go = {
+  plugin = true,
+  n = {
+    ["<leader>dgt"] = {
+      function()
+        require('dap-go').debug_test()
+      end,
+      "Debug go test"
+    },
+    ["<leader>dgl"] = {
+      function()
+        require('dap-go').debug_last()
+      end,
+      "Debug last go test"
+    }
+  }
+}
+
+M.gopher = {
+  plugin = true,
+  n = {
+    ["<leader>gtj"] = {
+      "<cmd> GoTagAdd json <CR>",
+      "Add json struct tags"
+    },
+    ["<leader>gty"] = {
+      "<cmd> GoTagAdd yaml <CR>",
+      "Add yaml struct tags"
+    }
+  }
+}
+
 return M
 

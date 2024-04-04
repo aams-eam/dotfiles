@@ -11,6 +11,11 @@ local plugins = {
         "jq",
         "yaml-language-server",
         "clangd",
+        "gopls",
+        "gofumpt",
+        "goimports-reviser",
+        "golines",
+        "delve",
       },
     },
   },
@@ -69,7 +74,7 @@ local plugins = {
 
   {
     "nvimtools/none-ls.nvim",
-    ft = {"python"},
+    ft = { "python", "go" },
     opts = function()
       return require "custom.configs.none-ls"
     end,
@@ -126,33 +131,33 @@ local plugins = {
       local dap = require('dap')
       local dapui = require('dapui')
       dapui.setup({
-        layouts = {{
+        layouts = { {
           elements = { {
-              id = "scopes",
-              size = 0.55
-            }, {
-              id = "breakpoints",
-              size = 0.15
-            }, {
-              id = "stacks",
-              size = 0.15
-            }, {
-              id = "watches",
-              size = 0.15
-            } },
+            id = "scopes",
+            size = 0.55
+          }, {
+            id = "breakpoints",
+            size = 0.15
+          }, {
+            id = "stacks",
+            size = 0.15
+          }, {
+            id = "watches",
+            size = 0.15
+          } },
           position = "left",
           size = 50
         }, {
           elements = { {
-              id = "repl",
-              size = 0.3
-            }, {
-              id = "console",
-              size = 0.7
-            } },
+            id = "repl",
+            size = 0.3
+          }, {
+            id = "console",
+            size = 0.7
+          } },
           position = "bottom",
           size = 10
-        }},
+        } },
       })
 
       dap.listeners.after.event_initialized['dapui_config'] = function()
@@ -194,10 +199,32 @@ local plugins = {
     lazy = false,
   },
 
+  {
+    "dreamsofcode-io/nvim-dap-go",
+    ft = "go",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function(_, opts)
+      require("dap-go").setup(opts)
+      require("core.utils").load_mappings("dap_go")
+    end
+  },
+
+  {
+    "dreamsofcode-io/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+      require("core.utils").load_mappings("gopher")
+    end,
+    build = function()
+      vim.cmd [[silent! toInstallDeps]]
+    end,
+  },
+
   -- nvim v0.8.0
   {
     "kdheepak/lazygit.nvim",
-    dependencies =  {
+    dependencies = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim"
     },
