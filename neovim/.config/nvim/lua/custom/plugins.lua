@@ -97,16 +97,9 @@ local plugins = {
 
   {
     "mfussenegger/nvim-dap",
-    config = function()
-      vim.keymap.set('n', '<F5>', function()
-        require('dap.ext.vscode').load_launchjs() -- Load launch.json every time we debug
-        require('dap').continue() end)
-      vim.keymap.set('n', '<F6>', function() require('dap').step_into() end)
-      vim.keymap.set('n', '<F7>', function() require('dap').step_over() end)
-      vim.keymap.set('n', '<F8>', function() require('dap').step_out() end)
-      vim.keymap.set('n', '<leader>dG', function() require('dap').run_to_cursor() end)
-    end,
-    lazy = false,
+    init = function()
+      require("core.utils").load_mappings("dap")
+    end
   },
 
   -- Have persistent breakpoints
@@ -116,13 +109,10 @@ local plugins = {
       'mfussenegger/nvim-dap',
     },
     config = function()
-      vim.keymap.set('n', '<leader>db', function() require("persistent-breakpoints.api").toggle_breakpoint() end)
-      vim.keymap.set('n', '<leader>dc',
-        function() require('persistent-breakpoints.api').set_conditional_breakpoint() end)
-      vim.keymap.set('n', '<leader>du', function() require('persistent-breakpoints.api').clear_all_breakpoints() end)
-      require('persistent-breakpoints').setup{
+      require('persistent-breakpoints').setup {
         load_breakpoints_event = { "BufReadPost" }
       }
+      require("core.utils").load_mappings("persistent_breakpoints")
     end,
     lazy = false,
   },
@@ -188,7 +178,7 @@ local plugins = {
     },
     config = function()
       require("dap-python").setup()
-      vim.keymap.set('n', '<F4>', function() require('dap-python').debug_selection() end)
+      require("core.utils").load_mappings("dap_python")
     end,
     lazy = false,
   },
