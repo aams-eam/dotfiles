@@ -26,7 +26,7 @@ local plugins = {
       view = {
         adaptive_size = true,
         relativenumber = true,
-        side = "left",
+        side = "right",
         width = 30,
         preserve_window_proportions = true,
       },
