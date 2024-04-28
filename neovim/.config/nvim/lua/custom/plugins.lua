@@ -123,6 +123,10 @@ local plugins = {
   },
 
   {
+    "nvim-neotest/nvim-nio"
+  },
+
+  {
     'rcarriga/nvim-dap-ui',
     dependencies = {
       'mfussenegger/nvim-dap',
@@ -230,8 +234,8 @@ local plugins = {
     config = function()
       require("go").setup()
     end,
-    event = {"CmdlineEnter"},
-    ft = {"go", 'gomod'},
+    event = { "CmdlineEnter" },
+    ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()'
   },
 
