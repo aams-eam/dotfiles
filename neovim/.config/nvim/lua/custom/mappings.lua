@@ -2,22 +2,28 @@ local M = {}
 
 M.general = {
   n = {
-     ["<C-b>"] = {"<C-d>zz", "Go down a page"},
-     ["<C-f>"] = {"<C-u>zz", "Go up a page"},
-     ["<C-d>"] = {"<C-d>zz", "Go down half a page"},
-     ["<C-u>"] = {"<C-u>zz", "Go up half a page"},
-     ["n"] = {"nzz", "Find next occurence"},
-     ["N"] = {"Nzz", "Find previous occurence"},
-     ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Open LazyGit" },
-     ["<leader>gr"] = { function() require("telescope.extensions.lazygit").lazygit() end, "Open LazyGit" },
+    ["<C-b>"] = { "<C-d>zz", "Go down a page" },
+    ["<C-f>"] = { "<C-u>zz", "Go up a page" },
+    ["<C-d>"] = { "<C-d>zz", "Go down half a page" },
+    ["<C-u>"] = { "<C-u>zz", "Go up half a page" },
+    ["n"] = { "nzz", "Find next occurence" },
+    ["N"] = { "Nzz", "Find previous occurence" },
+    ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Open LazyGit" },
+    ["<leader>gr"] = { function() require("telescope.extensions.lazygit").lazygit() end, "Open LazyGit" },
+    ["<leader>tt"] = {
+      function()
+        require("base46").toggle_transparency()
+      end,
+      "Toggle transparency",
+    },
   },
 }
 
 M.disabled = {
   n = {
     -- cycle through buffers
-    ["<tab>"] = {""},
-    ["<S-tab>"] = {""},
+    ["<tab>"] = { "" },
+    ["<S-tab>"] = { "" },
 
   }
 }
@@ -28,8 +34,8 @@ M.telescope = {
       function()
         require("telescope.builtin").buffers(
           {
-            ignore_current_buffer=true,
-            sort_mru=true,
+            ignore_current_buffer = true,
+            sort_mru = true,
           }
         )
       end,
@@ -72,7 +78,7 @@ M.dap = {
       "Run to cursor"
     },
     ["<leader>dsg"] = {
-      function ()
+      function()
         local widgets = require('dap.ui.widgets');
         local sidebar = widgets.sidebar(widgets.scopes);
         sidebar.open();
@@ -150,4 +156,3 @@ M.gopher = {
 }
 
 return M
-
