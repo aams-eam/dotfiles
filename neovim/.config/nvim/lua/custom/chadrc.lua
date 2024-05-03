@@ -8,6 +8,7 @@ M.ui = {
       bg = "one_bg",
     },
   },
+  transparency = true,
 }
 M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
