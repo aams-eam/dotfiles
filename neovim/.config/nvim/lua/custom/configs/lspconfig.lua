@@ -9,7 +9,7 @@ local util = require "lspconfig/util"
 lspconfig.pylsp.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"python"},
+  filetypes = { "python" },
 })
 
 lspconfig.clangd.setup({
@@ -35,8 +35,8 @@ lspconfig.ltex.setup({
 lspconfig.gopls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = {"gopls"},
-  filetypes = { "go", "gomod", "gowork", "gotmpl"},
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
