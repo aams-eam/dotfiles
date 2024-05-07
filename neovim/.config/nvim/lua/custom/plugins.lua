@@ -186,8 +186,7 @@ local plugins = {
       'rcarriga/nvim-dap-ui',
     },
     config = function()
-      require("dap-python").setup()
-      require("core.utils").load_mappings("dap_python")
+      require "custom.configs.dap-python"
     end,
     lazy = false,
   },
