@@ -239,6 +239,11 @@ local plugins = {
     build = ':lua require("go.install").update_all_sync()'
   },
 
+  {
+    "pteroctopus/faster.nvim",
+    lazy = false,
+  },
+
   -- nvim v0.8.0
   {
     "kdheepak/lazygit.nvim",
