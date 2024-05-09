@@ -101,6 +101,19 @@ local plugins = {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      mapping = {
+        ["<Tab>"] = require('cmp').mapping.confirm {
+          behavior = require('cmp').ConfirmBehavior.Insert,
+          select = true,
+        },
+        ["<CR>"] = {},
+      }
+    }
+  },
+
+  {
     "mfussenegger/nvim-dap",
     init = function()
       require("core.utils").load_mappings("dap")
@@ -241,6 +254,17 @@ local plugins = {
   {
     "pteroctopus/faster.nvim",
     lazy = false,
+  },
+
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        -- config
+      }
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
 
   -- nvim v0.8.0
