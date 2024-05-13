@@ -40,6 +40,11 @@ M.telescope = {
         )
       end,
       "Find Buffers" },
+    ["<leader>fd"] = {
+      function()
+        require("telescope").extensions.file_browser.file_browser()
+      end,
+      "Open File Browser" },
   }
 }
 

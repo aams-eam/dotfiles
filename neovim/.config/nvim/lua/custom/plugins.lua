@@ -267,6 +267,22 @@ local plugins = {
     dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
 
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    config = function()
+      require("telescope").setup {
+        extensions = {
+          file_browser = {
+            hijack_netrw = true,
+          },
+        },
+      }
+      require("telescope").load_extension "file_browser"
+    end,
+    lazy = false,
+  },
+
   -- nvim v0.8.0
   {
     "kdheepak/lazygit.nvim",
