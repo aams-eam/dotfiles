@@ -299,7 +299,6 @@ local plugins = {
       }
       require("telescope").load_extension "file_browser"
     end,
-    lazy = false,
   },
 
   -- nvim v0.8.0
