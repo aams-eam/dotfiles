@@ -254,7 +254,7 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
-      require('treesitter-context').setup{
+      require('treesitter-context').setup {
         enable = true,
         max_lines = 0,
         min_window_height = 0,
@@ -300,6 +300,18 @@ local plugins = {
       require("telescope").load_extension "file_browser"
     end,
   },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      height = 18,
+    },
+    config = function(_, opts)
+      require("trouble").setup(opts)
+      require("core.utils").load_mappings("trouble")
+    end,
+    lazy = false,
+  },
 
   -- nvim v0.8.0
   {
@@ -317,6 +329,7 @@ local plugins = {
     },
     config = function()
       require("telescope").load_extension("lazygit")
+      require("core.utils").load_mappings("lazygit")
     end,
   },
 }

@@ -8,8 +8,6 @@ M.general = {
     ["<C-u>"] = { "<C-u>zz", "Go up half a page" },
     ["n"] = { "nzz", "Find next occurence" },
     ["N"] = { "Nzz", "Find previous occurence" },
-    ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Open LazyGit" },
-    ["<leader>gr"] = { function() require("telescope.extensions.lazygit").lazygit() end, "Open LazyGit" },
     ["<leader>tt"] = {
       function()
         require("base46").toggle_transparency()
@@ -45,6 +43,24 @@ M.telescope = {
         require("telescope").extensions.file_browser.file_browser()
       end,
       "Open File Browser" },
+  }
+}
+
+M.lazygit = {
+  n = {
+    ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Open LazyGit" },
+    ["<leader>gr"] = { function() require("telescope.extensions.lazygit").lazygit() end, "Open LazyGit" },
+  }
+}
+
+M.trouble = {
+  n = {
+    ["<leader>xx"] = { function() require("trouble").toggle() end },
+    ["<leader>xw"] = { function() require("trouble").toggle("workspace_diagnostics") end },
+    ["<leader>xd"] = { function() require("trouble").toggle("document_diagnostics") end },
+    ["<leader>xq"] = { function() require("trouble").toggle("quickfix") end },
+    ["<leader>xl"] = { function() require("trouble").toggle("loclist") end },
+    ["gR"] = { function() require("trouble").toggle("lsp_references") end },
   }
 }
 
