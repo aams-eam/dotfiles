@@ -55,12 +55,12 @@ M.lazygit = {
 
 M.trouble = {
   n = {
-    ["<leader>xx"] = { function() require("trouble").toggle() end },
-    ["<leader>xw"] = { function() require("trouble").toggle("workspace_diagnostics") end },
-    ["<leader>xd"] = { function() require("trouble").toggle("document_diagnostics") end },
-    ["<leader>xq"] = { function() require("trouble").toggle("quickfix") end },
-    ["<leader>xl"] = { function() require("trouble").toggle("loclist") end },
-    ["gR"] = { function() require("trouble").toggle("lsp_references") end },
+    ["<leader>et"] = { function() require("trouble").toggle() end },
+    ["<leader>ew"] = { function() require("trouble").toggle("workspace_diagnostics") end },
+    ["<leader>ed"] = { function() require("trouble").toggle("document_diagnostics") end },
+    ["<leader>eq"] = { function() require("trouble").toggle("quickfix") end },
+    ["<leader>el"] = { function() require("trouble").toggle("loclist") end },
+    ["gr"] = { function() require("trouble").toggle("lsp_references") end },
   }
 }
 
