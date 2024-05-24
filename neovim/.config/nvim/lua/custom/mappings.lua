@@ -40,7 +40,15 @@ M.telescope = {
       "Find Buffers" },
     ["<leader>fd"] = {
       function()
-        require("telescope").extensions.file_browser.file_browser()
+        require("telescope").extensions.file_browser.file_browser({
+          path = "%:p:h",
+          grouped = true,
+          select_buffer = true,
+          hidden = {
+            file_browser = true,
+            folder_browser = false
+          },
+        })
       end,
       "Open File Browser" },
   }
