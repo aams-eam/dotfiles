@@ -300,6 +300,17 @@ local plugins = {
       require("telescope").load_extension "file_browser"
     end,
   },
+
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("harpoon"):setup()
+      require("core.utils").load_mappings("trouble")
+    end,
+  },
+
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
