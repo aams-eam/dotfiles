@@ -278,10 +278,12 @@ local plugins = {
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
-        -- config
-      }
+
+    opts = function()
+      return require "custom.configs.dashboard-nvim"
+    end,
+    config = function(_, opts)
+      require('dashboard').setup(opts)
     end,
     dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
