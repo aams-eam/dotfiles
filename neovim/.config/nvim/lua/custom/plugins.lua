@@ -326,6 +326,19 @@ local plugins = {
     lazy = false,
   },
 
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = function()
+      return require "custom.configs.obsidian"
+    end,
+  },
+
   -- nvim v0.8.0
   {
     "kdheepak/lazygit.nvim",
