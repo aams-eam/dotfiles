@@ -69,11 +69,10 @@ M.lazygit = {
 
 M.trouble = {
   n = {
-    ["<leader>et"] = { function() require("trouble").toggle() end, "Toggle trouble"},
-    ["<leader>ew"] = { function() require("trouble").toggle("workspace_diagnostics") end, "Toggle workspace diagnostics"},
-    ["<leader>ed"] = { function() require("trouble").toggle("document_diagnostics") end, "Toggle document diagnostics" },
+    ["<leader>et"] = { function() require("trouble").toggle("diagnostics") end, "Toggle trouble" },
     ["<leader>eq"] = { function() require("trouble").toggle("quickfix") end, "Toggle quickfix" },
-    ["<leader>el"] = { function() require("trouble").toggle("loclist") end, "Toggle loclist" },
+    ["<leader>el"] = { function() require("trouble").toggle("lsp") end, "Toggle LSP definitions, references, implementations, type definitions, and declarations" },
+    ["<leader>eL"] = { function() require("trouble").toggle("loclist") end, "Toggle loclist" },
     ["gr"] = { function() require("trouble").toggle("lsp_references") end, "Toggle lsp references" },
   }
 }
