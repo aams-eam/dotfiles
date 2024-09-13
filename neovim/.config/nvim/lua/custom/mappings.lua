@@ -26,6 +26,12 @@ M.disabled = {
   }
 }
 
+M.nvimtree = {
+  n = {
+    ["<leader>e"] = { "" },
+  },
+}
+
 M.telescope = {
   n = {
     ["<leader>fb"] = {
