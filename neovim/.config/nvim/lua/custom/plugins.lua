@@ -16,6 +16,7 @@ local plugins = {
         "goimports-reviser",
         "golines",
         "delve",
+        "svelte-language-server",
       },
     },
   },

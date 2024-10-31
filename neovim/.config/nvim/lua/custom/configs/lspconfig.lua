@@ -47,3 +47,8 @@ lspconfig.gopls.setup({
     },
   },
 })
+
+lspconfig.svelte.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
