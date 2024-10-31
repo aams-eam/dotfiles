@@ -152,6 +152,18 @@ M.dap_python = {
       end,
       "Python debug selection"
     },
+    ["<leader>dpc"] = {
+      function()
+        require("dap-python").debug_selection()
+      end,
+      "Python test class"
+    },
+    ["<leader>dpm"] = {
+      function()
+        require("dap-python").debug_selection()
+      end,
+      "Python test methods"
+    },
   }
 }
 
