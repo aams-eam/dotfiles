@@ -6,6 +6,7 @@ local plugins = {
         "lua-language-server",
         "python-lsp-server",
         "black",
+        "isort",
         "ltex-ls",
         "json-lsp",
         "jq",
