@@ -18,6 +18,7 @@ local plugins = {
         "golines",
         "delve",
         "svelte-language-server",
+        "helm-ls",
       },
     },
   },
