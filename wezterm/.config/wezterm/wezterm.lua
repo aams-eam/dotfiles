@@ -8,11 +8,17 @@ config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.font = wezterm.font "UbuntuMono Nerd Font"
 config.window_background_opacity = 0.81
-config.font_size = 15
+config.font_size = 18
 config.keys = {
   {
     key = 'F11',
     action = wezterm.action.ToggleFullScreen,
+  },
+-- This is what you need for Codex
+  {
+    key="Enter",
+    mods="SHIFT",
+    action=wezterm.action{SendString="\n"}
   },
 }
 
