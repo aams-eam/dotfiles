@@ -217,4 +217,16 @@ M.harpoon = {
   },
 }
 
+M.gitsigns = {
+  n = {
+    ["<leader>gd"] = {
+      function()
+        require("gitsigns").diffthis()
+      end,
+      "Diff this file",
+    },
+  },
+}
+
+
 return M
