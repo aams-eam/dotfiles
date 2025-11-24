@@ -69,6 +69,7 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
+    version = "0.1.7",
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"

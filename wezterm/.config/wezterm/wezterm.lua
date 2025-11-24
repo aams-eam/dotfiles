@@ -5,7 +5,7 @@ local config = {}
 -- config.default_domain = 'WSL:Ubuntu'
 
 config.enable_tab_bar = false
-config.window_decorations = "RESIZE"
+config.window_decorations = "TITLE | RESIZE"
 config.font = wezterm.font "UbuntuMono Nerd Font"
 config.window_background_opacity = 0.81
 config.font_size = 18
