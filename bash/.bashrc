@@ -135,6 +135,8 @@ alias claude="/home/aams-eam/.claude/local/claude"
 source <(kubectl completion bash)
 complete -o default -F __start_kubectl k
 
+bind '"\C-f":"tmux-sessionizer\n"'
+
 if [ -f "$HOME/.bashrc.local" ]; then
   source "$HOME/.bashrc.local"
 fi

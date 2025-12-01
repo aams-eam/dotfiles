@@ -2,8 +2,17 @@ local M = {}
 
 M.general = {
   n = {
-    ["<C-b>"] = { "<C-d>zz", "Go down a page" },
-    ["<C-f>"] = { "<C-u>zz", "Go up a page" },
+    ["<C-f>"] = {
+      function()
+        if vim.env.TMUX ~= nil and vim.env.TMUX ~= "" then
+          vim.fn.jobstart({ "tmux", "neww", "tmux-sessionizer" }, { detach = true })
+        else
+          vim.fn.termopen("tmux-sessionizer")
+          vim.cmd("startinsert")
+        end
+      end,
+      "Tmux sessionizer",
+    },
     ["<C-d>"] = { "<C-d>zz", "Go down half a page" },
     ["<C-u>"] = { "<C-u>zz", "Go up half a page" },
     ["n"] = { "nzz", "Find next occurence" },
@@ -82,7 +91,7 @@ M.dap = {
   n = {
     ["<F5>"] = {
       function()
-        require('dap.ext.vscode').load_launchjs() -- Load launch.json every time we debug
+        require('dap.ext.vscode').load_launchjs(".debug/launch.json") -- Load launch.json every time we debug
         require('dap').continue()
       end,
       "Open debugging options/continue debugging"
