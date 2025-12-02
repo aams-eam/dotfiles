@@ -78,6 +78,11 @@ mkdir -p "$MYHOME/.config/tmux/plugins"
 git clone --depth=1 https://github.com/tmux-plugins/tpm "$MYHOME/.config/tmux/plugins/tpm"
 "$MYHOME/.config/tmux/plugins/tpm/scripts/install_plugins.sh"
 
+# Install tmux-sessionizer
+curl -L https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/7edf8211e36368c29ffc0d2c6d5d2d350b4d729b/tmux-sessionizer \
+  -o "$HOME/.local/bin/tmux-sessionizer" && \
+chmod +x "$HOME/.local/bin/tmux-sessionizer"
+
 _echo "Creating ~/src, ~/docs, and ~/dotfiles symlinks"
 ln -sf "$MYHOME/.local/src" "$MYHOME/src"
 ln -sf "$MYHOME/.local/src/dotfiles" "$MYHOME/dotfiles"

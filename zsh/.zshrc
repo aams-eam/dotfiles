@@ -48,6 +48,8 @@ if command -v kubectl &>/dev/null; then
   compdef _kubectl k
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # Export all envs from a file
 exportallenvs() {
   set -a
@@ -55,6 +57,16 @@ exportallenvs() {
   set +a
 }
 
+
+# ctrl+f for tmux-sessionizer
+bindkey -s ^f "tmux-sessionizer\n"
+
 # Source local overrides
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/completion.zsh.inc'; fi
