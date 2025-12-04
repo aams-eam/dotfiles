@@ -19,6 +19,8 @@ local plugins = {
         "delve",
         "svelte-language-server",
         "helm-ls",
+        "terraform-ls",
+        "tflint",
       },
     },
   },
