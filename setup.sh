@@ -57,6 +57,11 @@ $ASME mkdir -p \
 _echo "installing lazygit"
 curl -sSL https://github.com/jesseduffield/lazygit/releases/download/v0.40.2/lazygit_0.40.2_Linux_x86_64.tar.gz | tar -zxvf - -C $MYHOME/.local/bin lazygit
 
+# tmux-sessionizer
+_echo "installing tmux-sessionizer"
+curl -L https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/7edf8211e36368c29ffc0d2c6d5d2d350b4d729b/tmux-sessionizer -o $MYHOME/.local/bin/tmux-sessionizer
+chmod +x $MYHOME/.local/bin/tmux-sessionizer
+
 # nvim
 _echo "building neovim"
 $ASME git clone --depth=1 https://github.com/neovim/neovim.git -b stable $MYHOME/.local/src/neovim &&
