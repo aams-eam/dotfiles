@@ -66,7 +66,7 @@ rm -f "$MYHOME/.zshrc" "$MYHOME/.gitconfig" "$MYHOME/.wezterm.lua"
 _echo "Setting up dotfiles with stow"
 git clone https://github.com/aams-eam/dotfiles.git "$MYHOME/.local/src/dotfiles" &&
     cd "$MYHOME/.local/src/dotfiles" &&
-    stow zsh git neovim tmux wezterm -t "$MYHOME"
+    stow zsh git neovim tmux wezterm tmux-sessionizer -t "$MYHOME"
 
 _echo "Installing Neovim plugins (Lazy and Mason)"
 nvim --headless "+Lazy! sync" +qa
