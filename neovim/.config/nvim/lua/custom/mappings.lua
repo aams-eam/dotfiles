@@ -234,6 +234,12 @@ M.gitsigns = {
       end,
       "Diff this file",
     },
+    ["<leader>gb"] = {
+      function()
+        require("gitsigns").blame()
+      end,
+      "Open blame on this file",
+    },
   },
 }
 
