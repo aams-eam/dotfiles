@@ -10,6 +10,7 @@ setopt APPEND_HISTORY
 # Prompt setup
 autoload -Uz colors && colors
 autoload -Uz promptinit && promptinit
+autoload -Uz compinit && compinit
 prompt adam1
 
 # Terminal title
