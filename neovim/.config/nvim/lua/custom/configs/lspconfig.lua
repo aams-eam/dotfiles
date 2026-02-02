@@ -25,6 +25,13 @@ lspconfig.jsonls.setup({
 lspconfig.yamlls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  settings = {
+    yaml = {
+      format = {
+        enable = true,
+      }
+    }
+  }
 })
 
 lspconfig.ltex.setup({
