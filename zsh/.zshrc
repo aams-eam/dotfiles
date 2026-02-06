@@ -67,7 +67,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/.local/src/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.local/src/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alejandroantonio.moreno/.local/src/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/.local/src/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/.local/src/google-cloud-sdk/completion.zsh.inc"; fi
