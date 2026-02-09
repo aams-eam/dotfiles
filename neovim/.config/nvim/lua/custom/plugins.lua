@@ -383,6 +383,17 @@ local plugins = {
       if vim.fn.executable "npx" then vim.g.mkdp_filetypes = { "markdown" } end
     end,
   },
+
+  {
+    'ruifm/gitlinker.nvim',
+    dependencies = {
+     'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require("gitlinker").setup()
+    end,
+    lazy = false,
+  },
 }
 
 return plugins
