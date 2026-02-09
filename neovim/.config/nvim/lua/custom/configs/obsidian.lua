@@ -8,7 +8,7 @@ local opts = {
   workspaces = {
     {
       name = "SecondBrain",
-      path = "~/Syncthing/SecondBrain/",
+      path = "~/Nextcloud/SecondBrain/",
     },
   },
 
