@@ -277,6 +277,21 @@ local plugins = {
   },
 
   {
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, opts)
+      local actions = require("telescope.actions")
+      opts.defaults = opts.defaults or {}
+      opts.defaults.mappings = opts.defaults.mappings or {}
+      opts.defaults.mappings.i = opts.defaults.mappings.i or {}
+      opts.defaults.mappings.n = opts.defaults.mappings.n or {}
+      opts.defaults.mappings.i["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
+      opts.defaults.mappings.n["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
+      opts.defaults.mappings.i["<M-q>"] = actions.smart_add_to_qflist + actions.open_qflist
+      opts.defaults.mappings.n["<M-q>"] = actions.smart_add_to_qflist + actions.open_qflist
+    end,
+  },
+
+  {
     "pteroctopus/faster.nvim",
     lazy = false,
   },
