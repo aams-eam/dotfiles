@@ -409,6 +409,10 @@ local plugins = {
     end,
     lazy = false,
   },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    version = "v0.10.0",
+  },
 }
 
 return plugins
