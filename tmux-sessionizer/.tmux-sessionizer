@@ -1,0 +1,17 @@
+tmux rename-window editor
+tmux send-keys "nvim" C-m
+
+# Servers window with 4 panes (2x2)
+tmux new-window -n servers
+tmux split-window -h
+tmux split-window -v
+tmux select-pane -t 0
+tmux split-window -v
+tmux select-layout tiled
+
+# Terms window
+tmux new-window -n terms
+tmux split-window -h
+
+# Focus back to editor
+tmux select-window -t editor
