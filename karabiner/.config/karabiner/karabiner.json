@@ -4,9 +4,17 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Command+Backspace deletes previous word",
+                        "description": "Command+Backspace deletes previous word (except Finder)",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.apple\\.finder$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "delete_or_backspace",
                                     "modifiers": { "mandatory": ["command"] }
@@ -22,7 +30,7 @@
                         ]
                     },
                     {
-                        "description": "Delete key acts as Command+Delete in Finder",
+                        "description": "Supr key acts as Command+Delete in Finder",
                         "manipulators": [
                             {
                                 "conditions": [

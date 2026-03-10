@@ -9,32 +9,44 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "mandatory": ["right_option"],
-              "optional": ["any"]
+              "mandatory": [
+                "right_option"
+              ],
+              "optional": [
+                "any"
+              ]
             }
           },
           "to": [
             {
               "key_code": "semicolon",
-              "modifiers": ["right_option"]
+              "modifiers": [
+                "right_option"
+              ]
             }
           ]
         }
       ]
     },
     {
-      "description": "Delete key acts as Command+Delete in Finder",
+      "description": "Supr key acts as Command+Delete in Finder",
       "manipulators": [
         {
           "type": "basic",
           "from": {
             "key_code": "delete_forward",
-            "modifiers": { "optional": ["any"] }
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
           },
           "to": [
             {
               "key_code": "delete_or_backspace",
-              "modifiers": ["command"]
+              "modifiers": [
+                "command"
+              ]
             }
           ],
           "conditions": [
@@ -49,18 +61,32 @@
       ]
     },
     {
-      "description": "Command+Backspace deletes previous word",
+      "description": "Command+Backspace deletes previous word (except Finder)",
       "manipulators": [
         {
           "type": "basic",
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^com\\.apple\\.finder$"
+              ]
+            }
+          ],
           "from": {
             "key_code": "delete_or_backspace",
-            "modifiers": { "mandatory": ["command"] }
+            "modifiers": {
+              "mandatory": [
+                "command"
+              ]
+            }
           },
           "to": [
             {
               "key_code": "delete_or_backspace",
-              "modifiers": ["option"]
+              "modifiers": [
+                "option"
+              ]
             }
           ]
         }
