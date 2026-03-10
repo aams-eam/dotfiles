@@ -413,6 +413,14 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     version = "v0.10.0",
   },
+  {
+    "NvChad/nvim-colorizer.lua",
+    opts = {
+      user_default_options = {
+        suppress_deprecation = true,
+      },
+    },
+  }
 }
 
 return plugins
