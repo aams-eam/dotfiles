@@ -47,6 +47,24 @@
           ]
         }
       ]
+    },
+    {
+      "description": "Command+Backspace deletes previous word",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_or_backspace",
+            "modifiers": { "mandatory": ["command"] }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace",
+              "modifiers": ["option"]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
