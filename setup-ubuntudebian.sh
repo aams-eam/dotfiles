@@ -78,7 +78,7 @@ $ASME rm $MYHOME/.bashrc $MYHOME/.gitconfig $MYHOME/.wezterm.lua
 _echo "setting up dotfiles"
 $ASME git clone https://github.com/aams-eam/dotfiles.git $MYHOME/.local/src/dotfiles &&
 	cd $MYHOME/.local/src/dotfiles &&
-	$ASME stow bash git neovim tmux wezterm tmux-sessionizer -t $MYHOME
+	$ASME stow bash git karabiner neovim tmux tmux-sessionizer wezterm -t $MYHOME
 
 # nvim base nvchad
 _echo "Installing nvim plugins"

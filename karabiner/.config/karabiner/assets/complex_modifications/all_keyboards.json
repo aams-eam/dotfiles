@@ -1,0 +1,26 @@
+{
+  "title": "Rules for all keyboards",
+  "rules": [
+    {
+      "description": "Map Option+4 to tilde",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": ["right_option"],
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "semicolon",
+              "modifiers": ["right_option"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
