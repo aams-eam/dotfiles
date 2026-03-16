@@ -8,10 +8,16 @@
           "type": "basic",
           "from": {
             "key_code": "left_command",
-            "modifiers": { "optional": ["any"] }
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
           },
           "to": [
-            { "key_code": "left_control" }
+            {
+              "key_code": "left_control"
+            }
           ],
           "conditions": [
             {
@@ -37,10 +43,16 @@
           "type": "basic",
           "from": {
             "key_code": "left_control",
-            "modifiers": { "optional": ["any"] }
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
           },
           "to": [
-            { "key_code": "left_command" }
+            {
+              "key_code": "left_command"
+            }
           ],
           "conditions": [
             {
@@ -58,6 +70,77 @@
                 "^com\\.github\\.wez\\.wezterm$",
                 "^com\\.apple\\.Terminal$",
                 "^com\\.googlecode\\.iterm2$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Fix Corne volume keys (consumer → macOS system volume)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "consumer_key_code": "volume_increment"
+          },
+          "to": [
+            {
+              "key_code": "volume_up"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 18003,
+                  "product_id": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "consumer_key_code": "volume_decrement"
+          },
+          "to": [
+            {
+              "key_code": "volume_down"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 18003,
+                  "product_id": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "consumer_key_code": "mute"
+          },
+          "to": [
+            {
+              "key_code": "mute"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 18003,
+                  "product_id": 1
+                }
               ]
             }
           ]

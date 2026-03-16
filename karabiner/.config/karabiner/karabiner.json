@@ -4,6 +4,59 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Fix Corne volume keys (consumer → macOS system volume)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 18003
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "consumer_key_code": "volume_increment" },
+                                "to": [{ "key_code": "volume_up" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 18003
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "consumer_key_code": "volume_decrement" },
+                                "to": [{ "key_code": "volume_down" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1,
+                                                "vendor_id": 18003
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "consumer_key_code": "mute" },
+                                "to": [{ "key_code": "mute" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Command+Backspace deletes previous word (except Finder)",
                         "manipulators": [
                             {
