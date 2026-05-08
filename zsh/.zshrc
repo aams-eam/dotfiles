@@ -41,7 +41,6 @@ alias k="kubectl"
 alias dotfiles="cd $HOME/.local/src/dotfiles/"
 alias src="cd $HOME/.local/src/"
 alias sb="cd $HOME/Syncthing/SecondBrain/ && nvim ."
-alias claude="/home/aams-eam/.claude/local/claude"
 
 # kubectl completion (zsh version)
 if command -v kubectl &>/dev/null; then
@@ -78,3 +77,8 @@ if [ -f "$HOME/.local/src/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/
 
 # To prevent deleting a full path when doing option+backspace
 WORDCHARS=${WORDCHARS//\/}
+
+export PATH="$HOME/local/bin:$PATH"
+
+# TARIQ Academy — quick launch
+tariq() { cd "$HOME/tariq-academy" && source "$HOME/.config/tariq/env" 2>/dev/null && claude; }
