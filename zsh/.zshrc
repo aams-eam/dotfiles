@@ -62,6 +62,10 @@ exportallenvs() {
 # ctrl+f for tmux-sessionizer
 bindkey -s ^f "tmux-sessionizer\n"
 
+# Ctrl+Left / Ctrl+Right move by word (Linux-style; macOS zsh doesn't bind these by default)
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+
 # Source local overrides
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
