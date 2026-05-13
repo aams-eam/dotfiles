@@ -330,7 +330,7 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("harpoon"):setup()
-      require("core.utils").load_mappings("trouble")
+      require("core.utils").load_mappings("harpoon")
     end,
   },
 
@@ -408,6 +408,23 @@ local plugins = {
       require("gitlinker").setup()
     end,
     lazy = false,
+  },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory", "DiffviewToggleFiles" },
+    config = function()
+      require("diffview").setup()
+      require("core.utils").load_mappings("diffview")
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "DiffviewFiles", "DiffviewFileHistory" },
+        callback = function(args)
+          local actions = require("diffview.actions")
+          vim.keymap.set("n", "<BS>", actions.close_fold, { buffer = args.buf, desc = "Toggle fold" })
+        end,
+      })
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter",

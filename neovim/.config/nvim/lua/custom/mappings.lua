@@ -221,22 +221,16 @@ M.harpoon = {
       end,
       desc = "harpoon quick menu",
     },
-    ["<C-h>"] = { function() require("harpoon"):list():select(1) end, desc = "harpoon to file 1", },
-    ["<C-j>"] = { function() require("harpoon"):list():select(2) end, desc = "harpoon to file 2", },
-    ["<C-k>"] = { function() require("harpoon"):list():select(3) end, desc = "harpoon to file 3", },
-    ["<C-l>"] = { function() require("harpoon"):list():select(4) end, desc = "harpoon to file 4", },
-    ["<C-ñ>"] = { function() require("harpoon"):list():select(5) end, desc = "harpoon to file 5", },
+    ["<leader>1"] = { function() require("harpoon"):list():select(1) end, desc = "harpoon to file 1", },
+    ["<leader>2"] = { function() require("harpoon"):list():select(2) end, desc = "harpoon to file 2", },
+    ["<leader>3"] = { function() require("harpoon"):list():select(3) end, desc = "harpoon to file 3", },
+    ["<leader>4"] = { function() require("harpoon"):list():select(4) end, desc = "harpoon to file 4", },
+    ["<leader>5"] = { function() require("harpoon"):list():select(5) end, desc = "harpoon to file 5", },
   },
 }
 
 M.gitsigns = {
   n = {
-    ["<leader>gd"] = {
-      function()
-        require("gitsigns").diffthis()
-      end,
-      "Diff this file",
-    },
     ["<leader>gb"] = {
       function()
         require("gitsigns").blame()
@@ -246,5 +240,25 @@ M.gitsigns = {
   },
 }
 
+M.diffview = {
+  n = {
+    ["<leader>gd"] = {
+      function()
+        vim.ui.input({ prompt = "DiffviewOpen (empty = working tree vs HEAD): " }, function(input)
+          if input == nil then return end
+          if input == "" then
+            vim.cmd("DiffviewOpen")
+          else
+            vim.cmd("DiffviewOpen " .. input)
+          end
+        end)
+      end,
+      "Diffview open with prompt",
+    },
+    ["<leader>gh"] = { "<cmd>DiffviewFileHistory %<CR>", "Diffview current file history" },
+    ["<leader>gH"] = { "<cmd>DiffviewFileHistory<CR>", "Diffview branch history" },
+    ["<leader>gc"] = { "<cmd>DiffviewClose<CR>", "Diffview close" },
+  },
+}
 
 return M
