@@ -24,6 +24,9 @@ M.general = {
       "Toggle transparency",
     },
   },
+  c = {
+    ["<M-BS>"] = { "<C-w>", "Delete word in command mode" },
+  },
 }
 
 M.disabled = {
