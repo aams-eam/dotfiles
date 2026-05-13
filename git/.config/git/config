@@ -4,4 +4,8 @@
 [color]
 	ui = auto
 [core]
-  editor = nvim
+	editor = nvim
+[includeIf "hasconfig:remote.*.url:**${WORK_GIT_HOST_1}**"]
+	path = ~/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:**${WORK_GIT_HOST_2}**"]
+	path = ~/.gitconfig-work
