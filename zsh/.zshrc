@@ -13,10 +13,16 @@ autoload -Uz promptinit && promptinit
 autoload -Uz compinit && compinit
 prompt adam1
 
+precmd_venv() {
+  [[ -n "$VIRTUAL_ENV" ]] && PROMPT="%F{yellow}($(basename $VIRTUAL_ENV))%f $PROMPT"
+}
+precmd_functions+=(precmd_venv)
+
 # Terminal title
 case "$TERM" in
   xterm*|rxvt*)
-    precmd() { print -Pn "\e]0;%n@%m: %~\a" }
+    precmd_title() { print -Pn "\e]0;%n@%m: %~\a" }
+    precmd_functions+=(precmd_title)
     ;;
 esac
 
