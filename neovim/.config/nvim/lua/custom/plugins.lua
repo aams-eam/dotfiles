@@ -294,6 +294,13 @@ local plugins = {
   {
     "pteroctopus/faster.nvim",
     lazy = false,
+    opts = {
+      behaviours = {
+        bigfile = {
+          filesize = 50,
+        },
+      },
+    },
   },
 
   {
@@ -429,6 +436,18 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     version = "v0.10.0",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, {
+        "json", "jsonc", "yaml", "toml",
+        "bash", "markdown", "markdown_inline",
+        "python", "go", "gomod", "gowork", "gosum",
+        "hcl", "terraform", "dockerfile",
+        "html", "css", "javascript", "typescript", "tsx",
+        "svelte",
+      })
+      opts.auto_install = true
+    end,
   },
   {
     "NvChad/nvim-colorizer.lua",
