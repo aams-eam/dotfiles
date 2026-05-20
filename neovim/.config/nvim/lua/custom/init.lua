@@ -1,3 +1,10 @@
+-- Ensure Homebrew's bin is on PATH so LSP subprocesses (e.g. jsonls calling
+-- node) work when nvim is launched from a GUI context like NvimOpener.app,
+-- where the inherited PATH does not include /opt/homebrew/bin.
+if vim.fn.isdirectory("/opt/homebrew/bin") == 1 then
+  vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
+end
+
 vim.o.relativenumber = true
 vim.opt.conceallevel = 1
 
