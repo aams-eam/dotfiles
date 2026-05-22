@@ -6,6 +6,9 @@ export ME=$SUDO_USER
 # Script vars
 MYHOME="/home/$ME"
 ASME="sudo -u $ME"
+NVIM_VERSION="v0.11.7"
+NVIM_TARBALL="/tmp/nvim-linux-x86_64-${NVIM_VERSION}.tar.gz"
+NVIM_TARBALL_URL="https://github.com/neovim/neovim-releases/releases/download/${NVIM_VERSION}/nvim-linux-x86_64.tar.gz"
 
 # helper functions
 function _echo() { printf "\n╓───── %s \n╙────────────────────────────────────── ─ ─ \n" "$1"; }
@@ -63,11 +66,10 @@ curl -L https://raw.githubusercontent.com/ThePrimeagen/tmux-sessionizer/7edf8211
 chmod +x $MYHOME/.local/bin/tmux-sessionizer
 
 # nvim
-_echo "building neovim"
-$ASME git clone --depth=1 https://github.com/neovim/neovim.git -b stable $MYHOME/.local/src/neovim &&
-	cd $MYHOME/.local/src/neovim &&
-	make CMAKE_BUILD_TYPE=RelWithDebInfo &&
-	make install
+_echo "installing neovim ${NVIM_VERSION}"
+$ASME curl -L "$NVIM_TARBALL_URL" -o "$NVIM_TARBALL"
+$ASME tar -C "$MYHOME/.local" --strip-components=1 -xzf "$NVIM_TARBALL"
+$MYHOME/.local/bin/nvim --version | head -n 3
 
 _echo "clonning nvim nvchad"
 	$ASME git clone --branch v2.0 --single-branch https://github.com/NvChad/NvChad.git $MYHOME/.config/nvim
@@ -82,8 +84,8 @@ $ASME git clone https://github.com/aams-eam/dotfiles.git $MYHOME/.local/src/dotf
 
 # nvim base nvchad
 _echo "Installing nvim plugins"
-$ASME nvim --headless "+Lazy! sync" +qa
-$ASME nvim --headless "+MasonInstallAll" +qa
+$ASME $MYHOME/.local/bin/nvim --headless "+Lazy! sync" +qa
+$ASME $MYHOME/.local/bin/nvim --headless "+MasonInstallAll" +qa
 
 # tmux
 _echo "building tmux"
