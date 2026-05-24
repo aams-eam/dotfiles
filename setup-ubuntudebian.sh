@@ -101,11 +101,6 @@ $ASME mkdir -p $MYHOME/.config/tmux/plugins &&
 	$ASME git clone --depth=1 https://github.com/tmux-plugins/tpm $MYHOME/.config/tmux/plugins/tpm &&
 	$ASME $MYHOME/.config/tmux/plugins/tpm/scripts/install_plugins.sh
 
-_echo "creating ~src, ~docs, and ~dotfiles aliases"
-useradd -g src -d $MYHOME/.local/src src
-useradd -d $MYHOME/.local/src/dotfiles dotfiles
-useradd -d $MYHOME/docs docs
-
 # Source bashrc
 _echo "Execute the following and you are good to go!"
 echo "source $MYHOME/.bashrc"
