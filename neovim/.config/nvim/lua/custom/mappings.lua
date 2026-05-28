@@ -229,6 +229,23 @@ M.harpoon = {
   },
 }
 
+M.gitlinker = {
+  n = {
+    ["<leader>gY"] = {
+      function()
+        require("gitlinker").get_repo_url()
+      end,
+      "Copy file repository url",
+    },
+    ["<leader>gB"] = {
+      function()
+        require("gitlinker").get_repo_url({action_callback = require"gitlinker.actions".open_in_browser})
+      end,
+      "Open file in browser",
+    },
+  },
+}
+
 M.gitsigns = {
   n = {
     ["<leader>gb"] = {
@@ -266,5 +283,6 @@ M.diffview = {
     ["<leader>gc"] = { "<cmd>DiffviewClose<CR>", "Diffview close" },
   },
 }
+
 
 return M
