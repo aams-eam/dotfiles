@@ -237,6 +237,12 @@ M.gitsigns = {
       end,
       "Open blame on this file",
     },
+    ["<leader>gs"] = {
+      function()
+        require("gitsigns").stage_hunk()
+      end,
+      "Stage this hunk",
+    },
   },
 }
 
