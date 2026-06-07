@@ -5,6 +5,21 @@ if vim.fn.isdirectory("/opt/homebrew/bin") == 1 then
   vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
 end
 
+if vim.fn.executable("xclip") == 1 then
+  vim.g.clipboard = {
+    name = "xclip",
+    copy = {
+      ["+"] = "xclip -selection clipboard",
+      ["*"] = "xclip -selection primary",
+    },
+    paste = {
+      ["+"] = "xclip -selection clipboard -o",
+      ["*"] = "xclip -selection primary -o",
+    },
+    cache_enabled = 0,
+  }
+end
+
 vim.o.relativenumber = true
 vim.opt.conceallevel = 1
 
