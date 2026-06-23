@@ -47,6 +47,7 @@ brew install \
     clamav \
     lazygit \
     neovim \
+    pyenv \
     tmux
 
 _echo "Creating directory skeletons"

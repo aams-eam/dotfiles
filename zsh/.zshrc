@@ -86,5 +86,6 @@ WORDCHARS=${WORDCHARS//\/}
 
 export PATH="$HOME/local/bin:$PATH"
 
-# TARIQ Academy — quick launch
-tariq() { cd "$HOME/tariq-academy" && source "$HOME/.config/tariq/env" 2>/dev/null && claude; }
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
