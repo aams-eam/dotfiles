@@ -284,5 +284,16 @@ M.diffview = {
   },
 }
 
+M.markdown_preview = {
+  n = {
+    ["<leader>mp"] = { "<cmd>MarkdownPreviewToggle<CR>", "Open Markdown Preview in a browser" },
+  },
+}
+
+M.render_markdown = {
+  n = {
+    ["<leader>mr"] = { "<cmd>RenderMarkdown<CR>", "Render Markdown inside Neovim" },
+  },
+}
 
 return M

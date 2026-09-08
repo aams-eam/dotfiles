@@ -404,6 +404,9 @@ local plugins = {
     init = function()
       if vim.fn.executable "npx" then vim.g.mkdp_filetypes = { "markdown" } end
     end,
+    config = function()
+      require("core.utils").load_mappings("markdown_preview")
+    end,
   },
 
   {
@@ -458,10 +461,12 @@ local plugins = {
     },
   },
   {
-      'MeanderingProgrammer/render-markdown.nvim',
-      dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-      cmd = { "RenderMarkdown" },
-      opts = {},
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    cmd = { "RenderMarkdown" },
+    config = function()
+      require("core.utils").load_mappings("render_markdown")
+    end,
   }
 }
 
