@@ -120,6 +120,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Docker completion
+if [ -r /usr/share/bash-completion/completions/docker ]; then
+    source /usr/share/bash-completion/completions/docker
+fi
+
 function exportallenvs {
     set -o allexport
     source "$1"
