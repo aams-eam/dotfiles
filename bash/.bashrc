@@ -140,7 +140,6 @@ alias k="kubectl"
 alias dotfiles="cd $HOME/.local/src/dotfiles/"
 alias src="cd $HOME/.local/src/"
 alias sb="cd $HOME/Syncthing/SecondBrain/ && nvim ."
-alias claude="/home/aams-eam/.claude/local/claude"
 source <(kubectl completion bash)
 complete -o default -F __start_kubectl k
 
