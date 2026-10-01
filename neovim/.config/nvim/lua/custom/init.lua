@@ -5,7 +5,21 @@ if vim.fn.isdirectory("/opt/homebrew/bin") == 1 then
   vim.env.PATH = "/opt/homebrew/bin:" .. vim.env.PATH
 end
 
-if vim.fn.executable("xclip") == 1 then
+if vim.fn.has("mac") == 0 and vim.env.DISPLAY == nil then
+  -- OSC 52 block
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local function paste()
+    return { vim.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+  end
+
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = { ["+"] = osc52.copy("+"), ["*"] = osc52.copy("*") },
+    paste = { ["+"] = paste, ["*"] = paste },
+  }
+  vim.opt.clipboard = "unnamedplus"
+elseif vim.fn.executable("xclip") == 1 then
+  -- xclip block
   vim.g.clipboard = {
     name = "xclip",
     copy = {
@@ -18,6 +32,7 @@ if vim.fn.executable("xclip") == 1 then
     },
     cache_enabled = 0,
   }
+  vim.opt.clipboard = "unnamedplus"
 end
 
 vim.o.relativenumber = true
