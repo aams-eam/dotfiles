@@ -292,7 +292,7 @@ M.markdown_preview = {
 
 M.render_markdown = {
   n = {
-    ["<leader>mr"] = { "<cmd>RenderMarkdown<CR>", "Render Markdown inside Neovim" },
+    ["<leader>mr"] = { "<cmd>RenderMarkdown toggle<CR>", "Render Markdown inside Neovim" },
   },
 }
 
